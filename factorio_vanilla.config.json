@@ -4,6 +4,7 @@
         "iron ore",
         "copper",
         "iron",
+        "coal",
         "gear",
         "steel",
         "wire",
@@ -44,6 +45,6 @@
         {"name": "electric mining drill", "process_type": "miner", "speed": 0.5},
         {"name": "stone furnace", "process_type": "smelt", "speed": 1},
         {"name": "steel furnace", "process_type": "smelt", "speed": 2},
-        {"name": "electric furnace", "process_type": "smelt", "speed": 2},
+        {"name": "electric furnace", "process_type": "smelt", "speed": 2}
     ]
 }
