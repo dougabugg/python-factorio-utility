@@ -3,18 +3,28 @@ class ProcessType:
         self.name = name
         self.units = []
         self.recipes = []
+    
+    def __repr__(self):
+        return self.name
 
 class ProcessUnit:
     def __init__(self, name, process_type, speed):
         self.name = name
         self.process_type = process_type
         self.speed = speed
+    
+    def __repr__(self):
+        return "name: {}, process type: {}, speed: {};".format(
+            self.name, self.process_type, self.speed)
 
 class Item:
     def __init__(self, name):
         self.name = name
         self.producers = []
         self.consumers = []
+
+    def __repr__(self):
+        return self.name
 
 class Recipe:
     def __init__(self, inputs, outputs, craft_time, priority, process_type):
@@ -23,6 +33,30 @@ class Recipe:
         self.craft_time = craft_time
         self.priority = priority
         self.process_type = process_type
+    
+    def get_input_count(self, item_name):
+        count = None
+        for c, item in self.inputs:
+            if item.name == item_name:
+                count = c
+        if count is None:
+            raise KeyError(item_name)
+        else:
+            return count
+    
+    def get_output_count(self, item_name):
+        count = None
+        for c, item in self.outputs:
+            if item.name == item_name:
+                count = c
+        if count is None:
+            raise KeyError(item_name)
+        else:
+            return count
+
+    def __repr__(self):
+        return "outputs: {}, inputs: {}, craft time: {}, priority: {}, process type: {};".format(
+            self.outputs, self.inputs, self.craft_time, self.priority, self.process_type)
 
 class GameConfigError(Exception):
     pass
@@ -61,7 +95,7 @@ class GameConfig:
             raise GameConfigError('item with name "{}" already exists'.format(name))
         self.items.append(item)
         self.named_items[name] = item
-    
+
     def add_process_type(self, name):
         process_type = ProcessType(name)
         if name in self.named_process_types:
@@ -87,9 +121,15 @@ class GameConfig:
         recipe = Recipe(norm_inputs, norm_outputs, craft_time, priority, norm_process_type)
         norm_process_type.recipes.append(recipe)
         for count, item in norm_inputs:
-            item.producers.append(recipe)
-        for count, item in norm_outputs:
             item.consumers.append(recipe)
+        for count, item in norm_outputs:
+            item.producers.append(recipe)
+    
+    def compute_inputs(self, target_item_name, target_speed, raw_item_names=None):
+        raw_items = None
+        if not raw_item_names is None:
+            raw_items = set((self.get_item(name) for name in raw_item_names))
+        return compute_inputs(self.get_item(target_item_name), target_speed, raw_items)
 
 def import_game_config(fp):
     import json
@@ -104,3 +144,23 @@ def import_game_config(fp):
     for recipe in raw_config["recipes"]:
         config.add_recipe(recipe["inputs"], recipe["outputs"], recipe["craft_time"], recipe["priority"], recipe["process_type"])
     return config
+
+def compute_inputs(target_item, target_speed, raw_items=None):
+    recipe = None
+    # use recipe with highest priority
+    for r in target_item.producers:
+        if recipe is None or recipe.priority < r.priority:
+            recipe = r
+    if recipe is None:
+        return {}
+    output_count = recipe.get_output_count(target_item.name)
+    totals = {}
+    for count, item in recipe.inputs:
+        speed = count / output_count * target_speed
+        totals[item.name] = totals.get(item.name, 0) + speed
+        if raw_items is None or not item in raw_items:
+            sub_totals = compute_inputs(item, speed, raw_items)
+            # print("for {}".format(item.name), sub_totals)
+            for item_name, total in sub_totals.items():
+                totals[item_name] = totals.get(item_name, 0) + total
+    return totals
