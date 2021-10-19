@@ -1,0 +1,39 @@
+{
+    "items": [
+        "copper ore",
+        "iron ore",
+        "copper",
+        "iron",
+        "gear",
+        "steel",
+        "wire",
+        "green circuit",
+        "yellow belt",
+        "yellow inserter",
+        "red science",
+        "green science"
+    ],
+    "recipes": [
+        {"outputs": [[1, "copper ore"]], "inputs": [], "craft_time": 1, "priority": 1, "process_type": "miner"},
+        {"outputs": [[1, "iron ore"]], "inputs": [], "craft_time": 1, "priority": 1, "process_type": "miner"},
+        {"outputs": [[1, "coal"]], "inputs": [], "craft_time": 1, "priority": 1, "process_type": "miner"},
+        {"outputs": [[1, "copper"]], "inputs": [[1, "copper ore"]], "craft_time": 3.2, "priority": 1, "process_type": "smelt"},
+        {"outputs": [[1, "iron"]], "inputs": [[1, "iron ore"]], "craft_time": 3.2, "priority": 1, "process_type": "smelt"},
+        {"outputs": [[1, "gear"]], "inputs": [[2, "iron"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
+        {"outputs": [[1, "steel"]], "inputs": [[5, "iron"]], "craft_time": 16, "priority": 1, "process_type": "smelt"},
+        {"outputs": [[2, "wire"]], "inputs": [[1, "copper"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
+        {"outputs": [[1, "green circuit"]], "inputs": [[3, "wire"], [1, "iron"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
+        {"outputs": [[1, "yellow belt"]], "inputs": [[1, "iron"], [1, "gear"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
+        {"outputs": [[1, "yellow inserter"]], "inputs": [[1, "green circuit"], [1, "gear"], [1, "iron"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
+        {"outputs": [[1, "red science"]], "inputs": [[1, "copper"], [1, "gear"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
+        {"outputs": [[1, "green science"]], "inputs": [[1, "yellow belt"], [1, "yellow inserter"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
+        {"outputs": [], "inputs": [], "craft_time": 0.5, "priority": 1, "process_type": "assembly"}
+    ],
+    "process_types": [
+        "miner",
+        "smelt",
+        "assembly",
+        "refinery",
+        "chemical"
+    ]
+}
