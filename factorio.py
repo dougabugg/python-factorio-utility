@@ -37,6 +37,24 @@ class GameConfig:
         self.process_units = []
         self.named_process_units = {}
     
+    def get_item(self, name):
+        try:
+            return self.named_items[name]
+        except KeyError as e:
+            raise GameConfigError('no item with name "{}" exists'.format(name)) from e
+    
+    def get_process_type(self, name):
+        try:
+            return self.named_process_types[name]
+        except KeyError as e:
+            raise GameConfigError('no process type with name "{}" exists'.format(name)) from e
+    
+    def get_process_unit(self, name):
+        try:
+            return self.named_process_units[name]
+        except KeyError as e:
+            raise GameConfigError('no process unit with name "{}" exists'.format(name)) from e
+
     def add_item(self, name):
         item = Item(name)
         if name in self.named_items:
@@ -52,7 +70,7 @@ class GameConfig:
         self.named_process_types[name] = process_type
     
     def add_process_unit(self, name, process_type, speed):
-        norm_process_type = self.named_process_types[process_type]
+        norm_process_type = self.get_process_type(process_type)
         unit = ProcessUnit(name, norm_process_type, speed)
         norm_process_type.units.append(unit)
         self.process_units.append(unit)
@@ -61,11 +79,11 @@ class GameConfig:
     def add_recipe(self, inputs, outputs, craft_time, priority, process_type):
         norm_inputs = []
         for count, item_name in inputs:
-            norm_inputs.append((count, self.named_items[item_name]))
+            norm_inputs.append((count, self.get_item(item_name)))
         norm_outputs = []
         for count, item_name in outputs:
-            norm_outputs.append((count, self.named_items[item_name]))
-        norm_process_type = self.named_process_types[process_type]
+            norm_outputs.append((count, self.get_item(item_name)))
+        norm_process_type = self.get_process_type(process_type)
         recipe = Recipe(norm_inputs, norm_outputs, craft_time, priority, norm_process_type)
         norm_process_type.recipes.append(recipe)
         for count, item in norm_inputs:
@@ -79,7 +97,7 @@ def import_game_config(fp):
     config = GameConfig()
     for name in raw_config["items"]:
         config.add_item(name)
-    for name in raw_config["process_type"]:
+    for name in raw_config["process_types"]:
         config.add_process_type(name)
     for raw_unit in raw_config["process_units"]:
         config.add_process_unit(raw_unit["name"], raw_unit["process_type"], raw_unit["speed"])
