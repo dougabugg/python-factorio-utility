@@ -35,5 +35,15 @@
         "assembly",
         "refinery",
         "chemical"
+    ],
+    "process_units": [
+        {"name": "assembling machine 1", "process_type": "assembly", "speed": 0.5},
+        {"name": "assembling machine 2", "process_type": "assembly", "speed": 0.75},
+        {"name": "assembling machine 3", "process_type": "assembly", "speed": 1.25},
+        {"name": "burner mining drill", "process_type": "miner", "speed": 0.25},
+        {"name": "electric mining drill", "process_type": "miner", "speed": 0.5},
+        {"name": "stone furnace", "process_type": "smelt", "speed": 1},
+        {"name": "steel furnace", "process_type": "smelt", "speed": 2},
+        {"name": "electric furnace", "process_type": "smelt", "speed": 2},
     ]
 }
