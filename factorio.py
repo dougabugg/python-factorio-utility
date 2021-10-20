@@ -130,6 +130,13 @@ class GameConfig:
         if not raw_item_names is None:
             raw_items = set((self.get_item(name) for name in raw_item_names))
         return compute_inputs(self.get_item(target_item_name), target_speed, raw_items)
+    
+    def compute_unit_quantity(self, target_item_name, target_speed, target_unit_name):
+        unit = self.get_process_unit(target_unit_name)
+        item = self.get_item(target_item_name)
+        recipe = item.producers[0]
+        assert recipe.process_type == unit.process_type
+        return (recipe.craft_time / recipe.get_output_count(item.name) * target_speed) / unit.speed
 
 def import_game_config(fp):
     import json
