@@ -22,6 +22,13 @@ class Item:
         self.name = name
         self.producers = []
         self.consumers = []
+    
+    def get_default_producer(self):
+        r = None
+        for recipe in self.producers:
+            if r is None or recipe.priority > r.priority:
+                r = recipe
+        return r
 
     def __repr__(self):
         return self.name
@@ -171,3 +178,53 @@ def compute_inputs(target_item, target_speed, raw_items=None):
             for item_name, total in sub_totals.items():
                 totals[item_name] = totals.get(item_name, 0) + total
     return totals
+
+class BaseMachine:
+    """A base, abstract machine"""
+    def compute_inputs(self):
+        raise NotImplemented
+    
+    def compute_outputs(self):
+        raise NotImplemented
+
+class Machine(BaseMachine):
+    """A collection of one or more identical machines, configured for the same recipe"""
+    def __init__(self, process_unit, recipe, count=1):
+        assert process_unit.process_type == recipe.process_type
+        self.process_unit = process_unit
+        self.recipe = recipe
+        self.count = count
+    
+    def compute_inputs(self):
+        r = dict()
+        for c, input in self.recipe.inputs:
+            r[input.name] = c * self.process_unit.speed * self.count
+        return r
+    
+    def compute_outputs(self):
+        r = dict()
+        for c, output in self.recipe.outputs:
+            r[output.name] = c * self.process_unit.speed * self.count
+        return r
+
+class Factory(BaseMachine):
+    """A logical group of zero or more different machines"""
+    def __init__(self):
+        self.machines = []
+
+    def add_machine(self, machine):
+        self.machines.append(machine)
+
+    def compute_inputs(self):
+        r = dict()
+        for machine in self.machines:
+            for item, count in machine.compute_inputs().items():
+                r[item] = r.get(item, 0) + count
+        return r
+
+    def compute_outputs(self):
+        r = dict()
+        for machine in self.machines:
+            for item, count in machine.compute_outputs().items():
+                r[item] = r.get(item, 0) + count
+        return r
