@@ -1,86 +1,149 @@
 {
     "items": [
-        "copper ore",
-        "iron ore",
-        "coal",
-        "stone",
-        "copper",
-        "iron",
-        "gear",
-        "pipe",
-        "iron stick",
-        "steel",
-        "wire",
-        "green circuit",
-        "yellow belt",
-        "yellow inserter",
-        "red science",
-        "green science",
-        "yellow ammo",
-        "red ammo",
-        "grenade",
-        "brick",
-        "wall",
-        "grey science",
-        "red circuit",
-        "petroleum gas",
-        "water",
-        "plastic",
-        "engine",
-        "sulfur",
-        "blue science",
-        "electric furnace",
-        "red module",
-        "rail",
-        "purple science",
-        "lubricant",
-        "sulfuric acid",
-        "electric engine",
-        "battery",
-        "robot frame",
-        "low density struct",
-        "blue circuit",
-        "yellow science"
+        "copper ore", "iron ore", "coal", "stone", "copper", "iron", "gear", "pipe",
+        "iron stick", "steel", "wire", "green circuit", "yellow belt", "yellow inserter",
+        "red science", "green science", "yellow ammo", "red ammo", "grenade", "brick",
+        "wall", "grey science", "red circuit", "petroleum gas", "water", "plastic",
+        "engine", "sulfur", "blue science", "electric furnace", "red module", "rail",
+        "purple science", "lubricant", "sulfuric acid", "electric engine", "battery",
+        "robot frame", "low density struct", "blue circuit", "yellow science"
     ],
     "recipes": [
-        {"outputs": [[1, "copper ore"]], "inputs": [], "craft_time": 1, "priority": 1, "process_type": "miner"},
-        {"outputs": [[1, "iron ore"]], "inputs": [], "craft_time": 1, "priority": 1, "process_type": "miner"},
-        {"outputs": [[1, "coal"]], "inputs": [], "craft_time": 1, "priority": 1, "process_type": "miner"},
-        {"outputs": [[1, "stone"]], "inputs": [], "craft_time": 1, "priority": 1, "process_type": "miner"},
-        {"outputs": [[1, "copper"]], "inputs": [[1, "copper ore"]], "craft_time": 3.2, "priority": 1, "process_type": "smelt"},
-        {"outputs": [[1, "iron"]], "inputs": [[1, "iron ore"]], "craft_time": 3.2, "priority": 1, "process_type": "smelt"},
-        {"outputs": [[1, "gear"]], "inputs": [[2, "iron"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "pipe"]], "inputs": [[1, "iron"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[2, "iron stick"]], "inputs": [[1, "iron"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "steel"]], "inputs": [[5, "iron"]], "craft_time": 16, "priority": 1, "process_type": "smelt"},
-        {"outputs": [[2, "wire"]], "inputs": [[1, "copper"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "green circuit"]], "inputs": [[3, "wire"], [1, "iron"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[2, "yellow belt"]], "inputs": [[1, "iron"], [1, "gear"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "yellow inserter"]], "inputs": [[1, "green circuit"], [1, "gear"], [1, "iron"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "red science"]], "inputs": [[1, "copper"], [1, "gear"]], "craft_time": 5, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "green science"]], "inputs": [[1, "yellow belt"], [1, "yellow inserter"]], "craft_time": 6, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "yellow ammo"]], "inputs": [[4, "iron"]], "craft_time": 1, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "red ammo"]], "inputs": [[5, "copper"], [1, "yellow ammo"], [1, "steel"]], "craft_time": 3, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "grenade"]], "inputs": [[10, "coal"], [5, "iron"]], "craft_time": 8, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "brick"]], "inputs": [[2, "stone"]], "craft_time": 3.2, "priority": 1, "process_type": "smelt"},
-        {"outputs": [[1, "wall"]], "inputs": [[5, "brick"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[2, "grey science"]], "inputs": [[1, "red ammo"], [1, "grenade"], [2, "wall"]], "craft_time": 10, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "red circuit"]], "inputs": [[4, "wire"], [2, "green circuit"], [2, "plastic"]], "craft_time": 6, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[2, "plastic"]], "inputs": [[1, "coal"], [20, "petroleum gas"]], "craft_time": 1, "priority": 1, "process_type": "chemical"},
-        {"outputs": [[1, "engine"]], "inputs": [[1, "gear"], [2, "pipe"], [1, "steel"]], "craft_time": 10, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[2, "sulfur"]], "inputs": [[30, "petroleum gas"], [30, "water"]], "craft_time": 1, "priority": 1, "process_type": "chemical"},
-        {"outputs": [[2, "blue science"]], "inputs": [[3, "red circuit"], [2, "engine"], [1, "sulfur"]], "craft_time": 24, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "electric furnace"]], "inputs": [[5, "red circuit"], [10, "steel"], [10, "brick"]], "craft_time": 5, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "red module"]], "inputs": [[5, "red circuit"], [5, "green circuit"]], "craft_time": 15, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[2, "rail"]], "inputs": [[1, "iron stick"], [1, "steel"], [1, "stone"]], "craft_time": 0.5, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[3, "purple science"]], "inputs": [[1, "electric furnace"], [1, "red module"], [30, "rail"]], "craft_time": 21, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "electric engine"]], "inputs": [[2, "green circuit"], [1, "engine"], [15, "lubricant"]], "craft_time": 10, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "battery"]], "inputs": [[1, "copper"], [1, "iron"], [20, "sulfuric acid"]], "craft_time": 4, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "robot frame"]], "inputs": [[2, "battery"], [1, "electric engine"], [3, "green circuit"], [1, "steel"]], "craft_time": 20, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "low density struct"]], "inputs": [[20, "copper"], [5, "plastic"], [2, "steel"]], "craft_time": 20, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[1, "blue circuit"]], "inputs": [[2, "red circuit"], [20, "green circuit"], [5, "sulfuric acid"]], "craft_time": 10, "priority": 1, "process_type": "assembly"},
-        {"outputs": [[3, "yellow science"]], "inputs": [[1, "robot frame"], [3, "low density struct"], [2, "blue circuit"]], "craft_time": 21, "priority": 1, "process_type": "assembly"},
-        {"outputs": [], "inputs": [], "craft_time": 0.5, "priority": 1, "process_type": "assembly"}
+        {
+            "outputs": [[1, "copper ore"]], "inputs": [], "craft_time": 1, "priority": 1,
+            "process_type": "miner"
+        }, {
+            "outputs": [[1, "iron ore"]], "inputs": [], "craft_time": 1, "priority": 1,
+            "process_type": "miner"
+        }, {
+            "outputs": [[1, "coal"]], "inputs": [], "craft_time": 1, "priority": 1,
+            "process_type": "miner"
+        }, {
+            "outputs": [[1, "stone"]], "inputs": [], "craft_time": 1, "priority": 1,
+            "process_type": "miner"
+        }, {
+            "outputs": [[1, "copper"]], "inputs": [[1, "copper ore"]], "craft_time": 3.2,
+            "priority": 1, "process_type": "smelt"
+        }, {
+            "outputs": [[1, "iron"]], "inputs": [[1, "iron ore"]], "craft_time": 3.2,
+            "priority": 1, "process_type": "smelt"
+        }, {
+            "outputs": [[1, "gear"]], "inputs": [[2, "iron"]], "craft_time": 0.5,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "pipe"]], "inputs": [[1, "iron"]], "craft_time": 0.5,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[2, "iron stick"]], "inputs": [[1, "iron"]], "craft_time": 0.5,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "steel"]], "inputs": [[5, "iron"]], "craft_time": 16,
+            "priority": 1, "process_type": "smelt"
+        }, {
+            "outputs": [[2, "wire"]], "inputs": [[1, "copper"]], "craft_time": 0.5,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "green circuit"]], "inputs": [[3, "wire"], [1, "iron"]],
+            "craft_time": 0.5, "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[2, "yellow belt"]], "inputs": [[1, "iron"], [1, "gear"]],
+            "craft_time": 0.5, "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "yellow inserter"]],
+            "inputs": [[1, "green circuit"], [1, "gear"], [1, "iron"]], "craft_time": 0.5,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "red science"]], "inputs": [[1, "copper"], [1, "gear"]],
+            "craft_time": 5, "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "green science"]],
+            "inputs": [[1, "yellow belt"], [1, "yellow inserter"]], "craft_time": 6,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "yellow ammo"]], "inputs": [[4, "iron"]], "craft_time": 1,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "red ammo"]],
+            "inputs": [[5, "copper"], [1, "yellow ammo"], [1, "steel"]], "craft_time": 3,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "grenade"]], "inputs": [[10, "coal"], [5, "iron"]],
+            "craft_time": 8, "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "brick"]], "inputs": [[2, "stone"]], "craft_time": 3.2,
+            "priority": 1, "process_type": "smelt"
+        }, {
+            "outputs": [[1, "wall"]], "inputs": [[5, "brick"]], "craft_time": 0.5,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[2, "grey science"]],
+            "inputs": [[1, "red ammo"], [1, "grenade"], [2, "wall"]], "craft_time": 10,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "red circuit"]],
+            "inputs": [[4, "wire"], [2, "green circuit"], [2, "plastic"]], "craft_time": 6,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[2, "plastic"]], "inputs": [[1, "coal"], [20, "petroleum gas"]],
+            "craft_time": 1, "priority": 1, "process_type": "chemical"
+        }, {
+            "outputs": [[1, "engine"]], "inputs": [[1, "gear"], [2, "pipe"], [1, "steel"]],
+            "craft_time": 10, "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[2, "sulfur"]], "inputs": [[30, "petroleum gas"], [30, "water"]],
+            "craft_time": 1, "priority": 1, "process_type": "chemical"
+        }, {
+            "outputs": [[2, "blue science"]],
+            "inputs": [[3, "red circuit"], [2, "engine"], [1, "sulfur"]], "craft_time": 24,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "electric furnace"]],
+            "inputs": [[5, "red circuit"], [10, "steel"], [10, "brick"]], "craft_time": 5,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "red module"]],
+            "inputs": [[5, "red circuit"], [5, "green circuit"]], "craft_time": 15,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[2, "rail"]],
+            "inputs": [[1, "iron stick"], [1, "steel"], [1, "stone"]], "craft_time": 0.5,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[3, "purple science"]],
+            "inputs": [[1, "electric furnace"], [1, "red module"], [30, "rail"]],
+            "craft_time": 21, "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "electric engine"]],
+            "inputs": [[2, "green circuit"], [1, "engine"], [15, "lubricant"]],
+            "craft_time": 10, "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "battery"]],
+            "inputs": [[1, "copper"], [1, "iron"], [20, "sulfuric acid"]], "craft_time": 4,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "robot frame"]],
+            "inputs": [[2, "battery"], [1, "electric engine"], [3, "green circuit"],
+                [1, "steel"]],
+            "craft_time": 20, "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "low density struct"]],
+            "inputs": [[20, "copper"], [5, "plastic"], [2, "steel"]], "craft_time": 20,
+            "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[1, "blue circuit"]],
+            "inputs": [[2, "red circuit"], [20, "green circuit"], [5, "sulfuric acid"]],
+            "craft_time": 10, "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [[3, "yellow science"]],
+            "inputs": [[1, "robot frame"], [3, "low density struct"], [2, "blue circuit"]],
+            "craft_time": 21, "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [], "inputs": [],
+            "craft_time": 0.5, "priority": 1, "process_type": "assembly"
+        }, {
+            "outputs": [], "inputs": [],
+            "craft_time": 0.5, "priority": 1, "process_type": "assembly"
+        }
     ],
     "process_types": [
         "miner",
